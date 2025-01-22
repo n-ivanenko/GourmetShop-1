@@ -33,11 +33,11 @@
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.productsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.viewToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.addToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.suppliersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.viewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.addSupplier = new System.Windows.Forms.ToolStripMenuItem();
             this.dgv = new System.Windows.Forms.DataGridView();
-            this.addToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.addToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv)).BeginInit();
             this.SuspendLayout();
@@ -61,7 +61,7 @@
             this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.exitToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
-            this.fileToolStripMenuItem.Size = new System.Drawing.Size(54, 32);
+            this.fileToolStripMenuItem.Size = new System.Drawing.Size(54, 29);
             this.fileToolStripMenuItem.Text = "File";
             // 
             // exitToolStripMenuItem
@@ -87,11 +87,17 @@
             this.viewToolStripMenuItem1.Text = "View";
             this.viewToolStripMenuItem1.Click += new System.EventHandler(this.viewToolStripMenuItem1_Click);
             // 
+            // addToolStripMenuItem1
+            // 
+            this.addToolStripMenuItem1.Name = "addToolStripMenuItem1";
+            this.addToolStripMenuItem1.Size = new System.Drawing.Size(151, 34);
+            this.addToolStripMenuItem1.Text = "Add";
+            // 
             // suppliersToolStripMenuItem
             // 
             this.suppliersToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.viewToolStripMenuItem,
-            this.addToolStripMenuItem});
+            this.addSupplier});
             this.suppliersToolStripMenuItem.Name = "suppliersToolStripMenuItem";
             this.suppliersToolStripMenuItem.Size = new System.Drawing.Size(101, 29);
             this.suppliersToolStripMenuItem.Text = "Suppliers";
@@ -102,6 +108,13 @@
             this.viewToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
             this.viewToolStripMenuItem.Text = "View";
             this.viewToolStripMenuItem.Click += new System.EventHandler(this.viewToolStripMenuItem_Click);
+            // 
+            // addSupplier
+            // 
+            this.addSupplier.Name = "addSupplier";
+            this.addSupplier.Size = new System.Drawing.Size(270, 34);
+            this.addSupplier.Text = "Add";
+            this.addSupplier.Click += new System.EventHandler(this.addSupplier_Click);
             // 
             // dgv
             // 
@@ -118,18 +131,6 @@
             this.dgv.RowTemplate.Height = 28;
             this.dgv.Size = new System.Drawing.Size(800, 392);
             this.dgv.TabIndex = 2;
-            // 
-            // addToolStripMenuItem
-            // 
-            this.addToolStripMenuItem.Name = "addToolStripMenuItem";
-            this.addToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
-            this.addToolStripMenuItem.Text = "Add";
-            // 
-            // addToolStripMenuItem1
-            // 
-            this.addToolStripMenuItem1.Name = "addToolStripMenuItem1";
-            this.addToolStripMenuItem1.Size = new System.Drawing.Size(270, 34);
-            this.addToolStripMenuItem1.Text = "Add";
             // 
             // MainForm
             // 
@@ -160,7 +161,7 @@
         private System.Windows.Forms.ToolStripMenuItem viewToolStripMenuItem;
         private System.Windows.Forms.DataGridView dgv;
         private System.Windows.Forms.ToolStripMenuItem addToolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem addToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem addSupplier;
     }
 }
 

@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using GourmetShop.DataAccess;
+using GourmetShop.DataAccess.Entities;
 using GourmetShop.DataAccess.Repositories;
 
 
@@ -16,6 +16,7 @@ namespace GourmetShop.WinForms
 {
     public partial class MainForm : Form
     {
+        private string connectionString;
         public MainForm()
         {
             InitializeComponent();
@@ -23,7 +24,8 @@ namespace GourmetShop.WinForms
         }
 
         private void MainForm_Load(object sender, EventArgs e)
-        { 
+        {
+           this.connectionString = ConfigurationManager.ConnectionStrings["prod"].ConnectionString;
         }
 
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
@@ -33,7 +35,6 @@ namespace GourmetShop.WinForms
 
         private void viewToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            string connectionString = ConfigurationManager.ConnectionStrings["prod"].ConnectionString;
             ProductRepository p = new ProductRepository(connectionString);
             var prods = p.GetAll();
             dgv.DataSource = prods;
@@ -42,10 +43,32 @@ namespace GourmetShop.WinForms
 
         private void viewToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            string connectionString = ConfigurationManager.ConnectionStrings["prod"].ConnectionString;
             SupplierRepository sr = new SupplierRepository(connectionString);
-             var supp = sr.GetAll();
+            var supp = sr.GetAll();
             dgv.DataSource = supp;
+        }
+
+        private void addSupplier_Click(object sender, EventArgs e)
+        {
+            using (SupplierForm f = new SupplierForm())
+            {
+                var result = f.ShowDialog();
+                if (result == DialogResult.OK)
+                {
+                    Supplier s = new Supplier();
+                    s.CompanyName = f.CompanyName;
+                    s.ContactName = f.ContactName;
+                    s.ContactTitle = f.ContactTitle;
+                    s.City = f.City;
+                    s.Country = f.Country;
+                    s.Phone = f.Phone;
+                    s.Fax = f.Fax;
+
+                    SupplierRepository sr = new SupplierRepository(connectionString);
+                    sr.Add(s);
+                    dgv.DataSource = sr.GetAll();
+                }
+            }
         }
     }
 }
