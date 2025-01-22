@@ -70,5 +70,27 @@ namespace GourmetShop.WinForms
                 }
             }
         }
+
+        private void addToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            using (ProductForm f = new ProductForm())
+            {
+                var result = f.ShowDialog();
+                if (result == DialogResult.OK)
+                {
+                    Product p = new Product();
+                    p.ProductName = f.ProductName;
+                    p.SupplierId = f.SupplierId;
+                    p.UnitPrice = f.UnitPrice;
+                    p.Package = f.Package;
+                    p.IsDiscontinued = f.IsDiscontinued;
+
+                    ProductRepository pr = new ProductRepository(connectionString);
+
+                    pr.Add(p);
+                    dgv.DataSource = pr.GetAll();
+                }
+            }
+        }
     }
 }
