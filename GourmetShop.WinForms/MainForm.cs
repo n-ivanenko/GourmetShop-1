@@ -26,14 +26,26 @@ namespace GourmetShop.WinForms
         { 
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            System.Windows.Forms.Application.Exit();
+        }
+
+        private void viewToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             string connectionString = ConfigurationManager.ConnectionStrings["prod"].ConnectionString;
             ProductRepository p = new ProductRepository(connectionString);
             var prods = p.GetAll();
+            dgv.DataSource = prods;
 
+        }
+
+        private void viewToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            string connectionString = ConfigurationManager.ConnectionStrings["prod"].ConnectionString;
             SupplierRepository sr = new SupplierRepository(connectionString);
-            var supp = sr.GetAll();
+             var supp = sr.GetAll();
+            dgv.DataSource = supp;
         }
     }
 }
