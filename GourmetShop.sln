@@ -1,0 +1,33 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.11.35327.3
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GourmetShop.DataAccess", "GourmetShop.DataAccess\GourmetShop.DataAccess.csproj", "{25CDA0CC-5D45-47D5-8C10-79056D266F40}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{412B81C2-8FB3-47B5-9C7E-F794FF9562C9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GourmetShop.WinForms", "GourmetShop.WinForms\GourmetShop.WinForms.csproj", "{4CEB5AEB-4C58-40CF-B9C3-48B3AA35A70A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{25CDA0CC-5D45-47D5-8C10-79056D266F40}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{25CDA0CC-5D45-47D5-8C10-79056D266F40}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{25CDA0CC-5D45-47D5-8C10-79056D266F40}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{25CDA0CC-5D45-47D5-8C10-79056D266F40}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4CEB5AEB-4C58-40CF-B9C3-48B3AA35A70A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4CEB5AEB-4C58-40CF-B9C3-48B3AA35A70A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4CEB5AEB-4C58-40CF-B9C3-48B3AA35A70A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4CEB5AEB-4C58-40CF-B9C3-48B3AA35A70A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D83EBFE2-0AF2-46A2-852F-7BE6DE9028F2}
+	EndGlobalSection
+EndGlobal
