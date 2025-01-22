@@ -42,13 +42,13 @@ namespace GourmetShop.DataAccess.Repositories
 
         public IEnumerable<T> GetAll()
         {
-
             var results = new List<T>();
             using (var connection = new SqlConnection(_connectionString))
             {
                 connection.Open();
-                using (var command = new SqlCommand(string.Format("exec GourmetShopGetAll{0}", _table), connection))
+                using (var command = new SqlCommand(string.Format("GourmetShopGetAll{0}", _table), connection))
                 {
+                    command.CommandType = System.Data.CommandType.StoredProcedure;
                     using (var reader = command.ExecuteReader())
                     {
                         while (reader.Read())
@@ -70,8 +70,27 @@ namespace GourmetShop.DataAccess.Repositories
 
         public void Add(T entity)
         {
-            // Add SQL logic for inserting a record
-            throw new NotImplementedException();
+            using (var connection = new SqlConnection(_connectionString))
+            {
+                connection.Open();
+                Type type = typeof(T);
+                var accessor = TypeAccessor.Create(type);
+                var members = accessor.GetMembers();
+                using (var comm = new SqlCommand(string.Format("GourmetShopInsert{0}", _table), connection))
+                {
+                    comm.CommandType = System.Data.CommandType.StoredProcedure;
+
+                    foreach (Member m in members)
+                    {
+                        if (m.Name != "Id") {
+                            comm.Parameters.AddWithValue(m.Name, accessor[entity, m.Name]);
+                        }
+                    }
+
+                    comm.ExecuteNonQuery();
+
+                }
+            }
         }
 
         public void Update(T entity)
