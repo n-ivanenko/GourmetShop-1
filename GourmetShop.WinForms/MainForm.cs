@@ -31,6 +31,9 @@ namespace GourmetShop.WinForms
             string connectionString = ConfigurationManager.ConnectionStrings["prod"].ConnectionString;
             ProductRepository p = new ProductRepository(connectionString);
             var prods = p.GetAll();
+
+            SupplierRepository sr = new SupplierRepository(connectionString);
+            var supp = sr.GetAll();
         }
     }
 }
