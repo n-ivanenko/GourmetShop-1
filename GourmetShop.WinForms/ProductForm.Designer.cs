@@ -39,6 +39,7 @@
             this.txtSupplierId = new System.Windows.Forms.TextBox();
             this.txtUnitPrice = new System.Windows.Forms.MaskedTextBox();
             this.txtPackage = new System.Windows.Forms.TextBox();
+            this.txtId = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // btnAdd
@@ -136,11 +137,21 @@
             this.txtPackage.Size = new System.Drawing.Size(264, 26);
             this.txtPackage.TabIndex = 4;
             // 
+            // txtId
+            // 
+            this.txtId.Location = new System.Drawing.Point(187, 8);
+            this.txtId.Name = "txtId";
+            this.txtId.ReadOnly = true;
+            this.txtId.Size = new System.Drawing.Size(100, 26);
+            this.txtId.TabIndex = 8;
+            this.txtId.Visible = false;
+            // 
             // ProductForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(488, 325);
+            this.Controls.Add(this.txtId);
             this.Controls.Add(this.txtPackage);
             this.Controls.Add(this.txtUnitPrice);
             this.Controls.Add(this.txtSupplierId);
@@ -172,5 +183,6 @@
         private System.Windows.Forms.TextBox txtSupplierId;
         private System.Windows.Forms.MaskedTextBox txtUnitPrice;
         private System.Windows.Forms.TextBox txtPackage;
+        private System.Windows.Forms.TextBox txtId;
     }
 }

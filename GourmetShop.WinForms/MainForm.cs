@@ -17,6 +17,7 @@ namespace GourmetShop.WinForms
     public partial class MainForm : Form
     {
         private string connectionString;
+        private int clickedRow;
         public MainForm()
         {
             InitializeComponent();
@@ -91,6 +92,41 @@ namespace GourmetShop.WinForms
                     dgv.DataSource = pr.GetAll();
                 }
             }
+        }
+
+        private void dgv_CellContextMenuStripNeeded(object sender, DataGridViewCellContextMenuStripNeededEventArgs e)
+        {
+            this.clickedRow = e.RowIndex;
+        }
+
+        private void editToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            using (ProductForm f = new ProductForm(Convert.ToInt32(dgv[0,this.clickedRow].Value),
+                                                   dgv[1, this.clickedRow].Value.ToString(),
+                                                   Convert.ToInt32(dgv[2, this.clickedRow].Value.ToString()),
+                                                   Convert.ToDecimal(dgv[3, this.clickedRow].Value.ToString()),
+                                                   dgv[4, this.clickedRow].Value.ToString(),
+                                                   Convert.ToBoolean(dgv[5, this.clickedRow].Value)
+                                                   ))
+            {
+                var result = f.ShowDialog();
+                if (result == DialogResult.OK)
+                {
+                    Product p = new Product();
+                    p.Id = f.Id;
+                    p.ProductName = f.ProductName;
+                    p.SupplierId = f.SupplierId;
+                    p.UnitPrice = f.UnitPrice;
+                    p.Package = f.Package;
+                    p.IsDiscontinued = f.IsDiscontinued;
+
+                    ProductRepository pr = new ProductRepository(connectionString);
+
+                    pr.Update(p);
+                    dgv.DataSource = pr.GetAll();
+                }
+            }
+        
         }
     }
 }

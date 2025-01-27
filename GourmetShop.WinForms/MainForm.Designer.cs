@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -38,8 +39,11 @@
             this.viewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.addSupplier = new System.Windows.Forms.ToolStripMenuItem();
             this.dgv = new System.Windows.Forms.DataGridView();
+            this.cmsRow = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv)).BeginInit();
+            this.cmsRow.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -61,7 +65,7 @@
             this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.exitToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
-            this.fileToolStripMenuItem.Size = new System.Drawing.Size(54, 29);
+            this.fileToolStripMenuItem.Size = new System.Drawing.Size(54, 32);
             this.fileToolStripMenuItem.Text = "File";
             // 
             // exitToolStripMenuItem
@@ -77,20 +81,20 @@
             this.viewToolStripMenuItem1,
             this.addToolStripMenuItem1});
             this.productsToolStripMenuItem.Name = "productsToolStripMenuItem";
-            this.productsToolStripMenuItem.Size = new System.Drawing.Size(98, 29);
+            this.productsToolStripMenuItem.Size = new System.Drawing.Size(98, 32);
             this.productsToolStripMenuItem.Text = "Products";
             // 
             // viewToolStripMenuItem1
             // 
             this.viewToolStripMenuItem1.Name = "viewToolStripMenuItem1";
-            this.viewToolStripMenuItem1.Size = new System.Drawing.Size(270, 34);
+            this.viewToolStripMenuItem1.Size = new System.Drawing.Size(151, 34);
             this.viewToolStripMenuItem1.Text = "View";
             this.viewToolStripMenuItem1.Click += new System.EventHandler(this.viewToolStripMenuItem1_Click);
             // 
             // addToolStripMenuItem1
             // 
             this.addToolStripMenuItem1.Name = "addToolStripMenuItem1";
-            this.addToolStripMenuItem1.Size = new System.Drawing.Size(270, 34);
+            this.addToolStripMenuItem1.Size = new System.Drawing.Size(151, 34);
             this.addToolStripMenuItem1.Text = "Add";
             this.addToolStripMenuItem1.Click += new System.EventHandler(this.addToolStripMenuItem1_Click);
             // 
@@ -100,7 +104,7 @@
             this.viewToolStripMenuItem,
             this.addSupplier});
             this.suppliersToolStripMenuItem.Name = "suppliersToolStripMenuItem";
-            this.suppliersToolStripMenuItem.Size = new System.Drawing.Size(101, 29);
+            this.suppliersToolStripMenuItem.Size = new System.Drawing.Size(101, 32);
             this.suppliersToolStripMenuItem.Text = "Suppliers";
             // 
             // viewToolStripMenuItem
@@ -125,6 +129,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgv.ContextMenuStrip = this.cmsRow;
             this.dgv.Location = new System.Drawing.Point(0, 36);
             this.dgv.Name = "dgv";
             this.dgv.ReadOnly = true;
@@ -132,6 +137,22 @@
             this.dgv.RowTemplate.Height = 28;
             this.dgv.Size = new System.Drawing.Size(800, 392);
             this.dgv.TabIndex = 2;
+            this.dgv.CellContextMenuStripNeeded += new System.Windows.Forms.DataGridViewCellContextMenuStripNeededEventHandler(this.dgv_CellContextMenuStripNeeded);
+            // 
+            // cmsRow
+            // 
+            this.cmsRow.ImageScalingSize = new System.Drawing.Size(24, 24);
+            this.cmsRow.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.editToolStripMenuItem});
+            this.cmsRow.Name = "cmsRow";
+            this.cmsRow.Size = new System.Drawing.Size(241, 69);
+            // 
+            // editToolStripMenuItem
+            // 
+            this.editToolStripMenuItem.Name = "editToolStripMenuItem";
+            this.editToolStripMenuItem.Size = new System.Drawing.Size(240, 32);
+            this.editToolStripMenuItem.Text = "Edit";
+            this.editToolStripMenuItem.Click += new System.EventHandler(this.editToolStripMenuItem_Click);
             // 
             // MainForm
             // 
@@ -147,6 +168,7 @@
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv)).EndInit();
+            this.cmsRow.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -163,6 +185,8 @@
         private System.Windows.Forms.DataGridView dgv;
         private System.Windows.Forms.ToolStripMenuItem addToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem addSupplier;
+        private System.Windows.Forms.ContextMenuStrip cmsRow;
+        private System.Windows.Forms.ToolStripMenuItem editToolStripMenuItem;
     }
 }
 

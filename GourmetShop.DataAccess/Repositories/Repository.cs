@@ -68,7 +68,18 @@ namespace GourmetShop.DataAccess.Repositories
             throw new NotImplementedException();
         }
 
+
         public void Add(T entity)
+        {
+            this.RunNonQ(entity, string.Format("GourmetShopInsert{0}", _table), false);
+        }
+
+        public void Update(T entity)
+        {
+            this.RunNonQ(entity, string.Format("GourmetShopUpdate{0}", _table), true);
+        }
+
+        public void RunNonQ(T entity, String proc, bool withId)
         {
             using (var connection = new SqlConnection(_connectionString))
             {
@@ -76,13 +87,13 @@ namespace GourmetShop.DataAccess.Repositories
                 Type type = typeof(T);
                 var accessor = TypeAccessor.Create(type);
                 var members = accessor.GetMembers();
-                using (var comm = new SqlCommand(string.Format("GourmetShopInsert{0}", _table), connection))
+                using (var comm = new SqlCommand(proc, connection))
                 {
                     comm.CommandType = System.Data.CommandType.StoredProcedure;
 
                     foreach (Member m in members)
                     {
-                        if (m.Name != "Id") {
+                        if (m.Name != "Id" || (m.Name == "Id" && withId)) {
                             comm.Parameters.AddWithValue(m.Name, accessor[entity, m.Name]);
                         }
                     }
@@ -91,12 +102,6 @@ namespace GourmetShop.DataAccess.Repositories
 
                 }
             }
-        }
-
-        public void Update(T entity)
-        {
-            // Add SQL logic for updating a record
-            throw new NotImplementedException();
         }
 
         public void Delete(int id)
