@@ -14,10 +14,17 @@ using GourmetShop.DataAccess.Repositories;
 
 namespace GourmetShop.WinForms
 {
+
+    enum State
+    {
+        Product,
+        Supplier
+    }
     public partial class MainForm : Form
     {
         private string connectionString;
         private int clickedRow;
+        private State s;
         public MainForm()
         {
             InitializeComponent();
@@ -36,6 +43,7 @@ namespace GourmetShop.WinForms
 
         private void viewToolStripMenuItem1_Click(object sender, EventArgs e)
         {
+            this.s = State.Product;
             ProductRepository p = new ProductRepository(connectionString);
             var prods = p.GetAll();
             dgv.DataSource = prods;
@@ -44,6 +52,7 @@ namespace GourmetShop.WinForms
 
         private void viewToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            this.s = State.Supplier;
             SupplierRepository sr = new SupplierRepository(connectionString);
             var supp = sr.GetAll();
             dgv.DataSource = supp;
@@ -68,6 +77,7 @@ namespace GourmetShop.WinForms
                     SupplierRepository sr = new SupplierRepository(connectionString);
                     sr.Add(s);
                     dgv.DataSource = sr.GetAll();
+                    this.s = State.Product;
                 }
             }
         }
@@ -90,6 +100,7 @@ namespace GourmetShop.WinForms
 
                     pr.Add(p);
                     dgv.DataSource = pr.GetAll();
+                    this.s = State.Product;
                 }
             }
         }
@@ -101,29 +112,64 @@ namespace GourmetShop.WinForms
 
         private void editToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            using (ProductForm f = new ProductForm(Convert.ToInt32(dgv[0,this.clickedRow].Value),
-                                                   dgv[1, this.clickedRow].Value.ToString(),
-                                                   Convert.ToInt32(dgv[2, this.clickedRow].Value.ToString()),
-                                                   Convert.ToDecimal(dgv[3, this.clickedRow].Value.ToString()),
-                                                   dgv[4, this.clickedRow].Value.ToString(),
-                                                   Convert.ToBoolean(dgv[5, this.clickedRow].Value)
-                                                   ))
+            // this should be refactored to use polymorphism more to repalce this duplicate code
+            if (this.s == State.Product)
             {
-                var result = f.ShowDialog();
-                if (result == DialogResult.OK)
+                using (ProductForm f = new ProductForm(Convert.ToInt32(dgv[0, this.clickedRow].Value),
+                                                       Convert.ToString(dgv[1, this.clickedRow].Value),
+                                                       Convert.ToInt32(dgv[2, this.clickedRow].Value.ToString()),
+                                                       Convert.ToDecimal(dgv[3, this.clickedRow].Value.ToString()),
+                                                       Convert.ToString(dgv[4, this.clickedRow].Value),
+                                                       Convert.ToBoolean(dgv[5, this.clickedRow].Value)
+                                                       ))
                 {
-                    Product p = new Product();
-                    p.Id = f.Id;
-                    p.ProductName = f.ProductName;
-                    p.SupplierId = f.SupplierId;
-                    p.UnitPrice = f.UnitPrice;
-                    p.Package = f.Package;
-                    p.IsDiscontinued = f.IsDiscontinued;
+                    var result = f.ShowDialog();
+                    if (result == DialogResult.OK)
+                    {
+                        Product p = new Product();
+                        p.Id = f.Id;
+                        p.ProductName = f.ProductName;
+                        p.SupplierId = f.SupplierId;
+                        p.UnitPrice = f.UnitPrice;
+                        p.Package = f.Package;
+                        p.IsDiscontinued = f.IsDiscontinued;
 
-                    ProductRepository pr = new ProductRepository(connectionString);
+                        ProductRepository pr = new ProductRepository(connectionString);
 
-                    pr.Update(p);
-                    dgv.DataSource = pr.GetAll();
+                        pr.Update(p);
+                        dgv.DataSource = pr.GetAll();
+                    }
+                }
+            } else if(this.s == State.Supplier)
+            {
+                using (SupplierForm f = new SupplierForm(Convert.ToInt32(dgv[0, this.clickedRow].Value),
+                                                         Convert.ToString(dgv[1, this.clickedRow].Value),
+                                                         Convert.ToString(dgv[2, this.clickedRow].Value),
+                                                         Convert.ToString(dgv[3, this.clickedRow].Value),
+                                                         Convert.ToString(dgv[4, this.clickedRow].Value),
+                                                         Convert.ToString(dgv[5, this.clickedRow].Value),
+                                                         Convert.ToString(dgv[6, this.clickedRow].Value),
+                                                         Convert.ToString(dgv[7, this.clickedRow].Value)))
+
+                {
+                    var result = f.ShowDialog();
+                    if (result == DialogResult.OK)
+                    {
+                        Supplier s = new Supplier();
+                        s.Id = f.Id;
+                        s.CompanyName = f.CompanyName;
+                        s.ContactName = f.ContactName;
+                        s.ContactTitle = f.ContactTitle;
+                        s.City = f.City;
+                        s.Country = f.Country;
+                        s.Phone = f.Phone;
+                        s.Fax = f.Fax;
+
+                        SupplierRepository sr = new SupplierRepository(connectionString);
+
+                        sr.Update(s);
+                        dgv.DataSource = sr.GetAll();
+                    }
                 }
             }
         

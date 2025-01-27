@@ -47,6 +47,7 @@
             this.txtContactTitle = new System.Windows.Forms.TextBox();
             this.txtCity = new System.Windows.Forms.TextBox();
             this.txtCountry = new System.Windows.Forms.TextBox();
+            this.txtId = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // btnAdd
@@ -190,11 +191,21 @@
             this.txtCountry.Size = new System.Drawing.Size(332, 26);
             this.txtCountry.TabIndex = 5;
             // 
+            // txtId
+            // 
+            this.txtId.Enabled = false;
+            this.txtId.Location = new System.Drawing.Point(204, 1);
+            this.txtId.Name = "txtId";
+            this.txtId.Size = new System.Drawing.Size(100, 26);
+            this.txtId.TabIndex = 10;
+            this.txtId.Visible = false;
+            // 
             // SupplierForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(548, 378);
+            this.Controls.Add(this.txtId);
             this.Controls.Add(this.txtCountry);
             this.Controls.Add(this.txtCity);
             this.Controls.Add(this.txtContactTitle);
@@ -238,5 +249,6 @@
         private System.Windows.Forms.TextBox txtContactTitle;
         private System.Windows.Forms.TextBox txtCity;
         private System.Windows.Forms.TextBox txtCountry;
+        private System.Windows.Forms.TextBox txtId;
     }
 }
