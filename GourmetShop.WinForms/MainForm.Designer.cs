@@ -41,6 +41,7 @@
             this.dgv = new System.Windows.Forms.DataGridView();
             this.cmsRow = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv)).BeginInit();
             this.cmsRow.SuspendLayout();
@@ -65,7 +66,7 @@
             this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.exitToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
-            this.fileToolStripMenuItem.Size = new System.Drawing.Size(54, 32);
+            this.fileToolStripMenuItem.Size = new System.Drawing.Size(54, 29);
             this.fileToolStripMenuItem.Text = "File";
             // 
             // exitToolStripMenuItem
@@ -81,7 +82,7 @@
             this.viewToolStripMenuItem1,
             this.addToolStripMenuItem1});
             this.productsToolStripMenuItem.Name = "productsToolStripMenuItem";
-            this.productsToolStripMenuItem.Size = new System.Drawing.Size(98, 32);
+            this.productsToolStripMenuItem.Size = new System.Drawing.Size(98, 29);
             this.productsToolStripMenuItem.Text = "Products";
             // 
             // viewToolStripMenuItem1
@@ -104,7 +105,7 @@
             this.viewToolStripMenuItem,
             this.addSupplier});
             this.suppliersToolStripMenuItem.Name = "suppliersToolStripMenuItem";
-            this.suppliersToolStripMenuItem.Size = new System.Drawing.Size(101, 32);
+            this.suppliersToolStripMenuItem.Size = new System.Drawing.Size(101, 29);
             this.suppliersToolStripMenuItem.Text = "Suppliers";
             // 
             // viewToolStripMenuItem
@@ -143,9 +144,10 @@
             // 
             this.cmsRow.ImageScalingSize = new System.Drawing.Size(24, 24);
             this.cmsRow.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.editToolStripMenuItem});
+            this.editToolStripMenuItem,
+            this.deleteToolStripMenuItem});
             this.cmsRow.Name = "cmsRow";
-            this.cmsRow.Size = new System.Drawing.Size(241, 69);
+            this.cmsRow.Size = new System.Drawing.Size(241, 101);
             // 
             // editToolStripMenuItem
             // 
@@ -153,6 +155,13 @@
             this.editToolStripMenuItem.Size = new System.Drawing.Size(240, 32);
             this.editToolStripMenuItem.Text = "Edit";
             this.editToolStripMenuItem.Click += new System.EventHandler(this.editToolStripMenuItem_Click);
+            // 
+            // deleteToolStripMenuItem
+            // 
+            this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
+            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(240, 32);
+            this.deleteToolStripMenuItem.Text = "Delete";
+            this.deleteToolStripMenuItem.Click += new System.EventHandler(this.deleteToolStripMenuItem_Click);
             // 
             // MainForm
             // 
@@ -187,6 +196,7 @@
         private System.Windows.Forms.ToolStripMenuItem addSupplier;
         private System.Windows.Forms.ContextMenuStrip cmsRow;
         private System.Windows.Forms.ToolStripMenuItem editToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem deleteToolStripMenuItem;
     }
 }
 

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace GourmetShop.DataAccess.Entities
 {
-    public class Supplier
+    public class Supplier : ITable
     {
         public int Id { get; set; }
         public string CompanyName { get; set; }

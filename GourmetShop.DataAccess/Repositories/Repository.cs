@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IdentityModel.Metadata;
 using System.Linq;
 using FastMember;
 using GourmetShop.DataAccess.Entities;
@@ -7,7 +8,7 @@ using Microsoft.Data.SqlClient;
 
 namespace GourmetShop.DataAccess.Repositories
 {
-    public class Repository<T> : IRepository<T> where T: new()
+    public class Repository<T> : IRepository<T> where T: ITable, new()
     {
         private readonly string _connectionString;
         private readonly string _table;
@@ -77,7 +78,7 @@ namespace GourmetShop.DataAccess.Repositories
         public void Update(T entity)
         {
             this.RunNonQ(entity, string.Format("GourmetShopUpdate{0}", _table), true);
-        }
+        } 
 
         public void RunNonQ(T entity, String proc, bool withId)
         {
@@ -106,8 +107,22 @@ namespace GourmetShop.DataAccess.Repositories
 
         public void Delete(int id)
         {
-            // Add SQL logic for deleting a record
-            throw new NotImplementedException();
+            using (var connection = new SqlConnection(_connectionString))
+            {
+                connection.Open();
+                Type type = typeof(T);
+                var accessor = TypeAccessor.Create(type);
+                var members = accessor.GetMembers();
+                using (var comm = new SqlCommand(String.Format("GourmetShopDelete{0}", _table), connection))
+                {
+                    comm.CommandType = System.Data.CommandType.StoredProcedure;
+
+                    comm.Parameters.AddWithValue("Id", id);
+
+                    comm.ExecuteNonQuery();
+
+                }
+            }
         }
     }
 }

@@ -174,5 +174,30 @@ namespace GourmetShop.WinForms
             }
         
         }
+
+        private void deleteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var r = MessageBox.Show(String.Format("Are you sure you wanted to delete record ID {0} {1}?",
+                                                   dgv[0, this.clickedRow].Value,
+                                                   dgv[1, this.clickedRow].Value),
+                                                   "Delete",
+                                                   MessageBoxButtons.YesNo);
+             if (r == DialogResult.Yes)
+             {
+                if (this.s == State.Product)
+                {
+                    ProductRepository pr = new ProductRepository(connectionString);
+                    pr.Delete(Convert.ToInt32(dgv[0, this.clickedRow].Value));
+                    dgv.DataSource = pr.GetAll();
+                }
+                else if (this.s == State.Supplier)
+                {
+                    SupplierRepository sr = new SupplierRepository(connectionString);
+                    sr.Delete(Convert.ToInt32(dgv[0, this.clickedRow].Value));
+                    dgv.DataSource = sr.GetAll();
+                }
+             } 
+            
+        }
     }
 }

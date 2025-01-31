@@ -2,7 +2,7 @@
 
 namespace GourmetShop.DataAccess.Entities
 {
-    public class Product
+    public class Product : ITable
     {
         public int Id { get; set; }
         public string ProductName { get; set; }
