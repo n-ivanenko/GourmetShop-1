@@ -7,6 +7,11 @@ namespace GourmetShop.DataAccess.Repositories
     {
         public ProductRepository(string connectionString) : base(connectionString, "Product")
         {
+            _getall = "GourmetShopGetAllProduct";
+            _insert = "GourmetShopInsertProduct";
+            _update = "GourmetShopUpdateProduct";
+            _delete = "GourmetShopDeleteProduct";
+
         }
     }
 }

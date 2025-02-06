@@ -11,7 +11,11 @@ namespace GourmetShop.DataAccess.Repositories
     public class Repository<T> : IRepository<T> where T: ITable, new()
     {
         private readonly string _connectionString;
-        private readonly string _table;
+        public string _table { get; protected set; }
+        protected string _getall;
+        protected string _insert;
+        protected string _update;
+        protected string _delete;
 
         public Repository(string connectionString, string table)
         {
@@ -47,7 +51,7 @@ namespace GourmetShop.DataAccess.Repositories
             using (var connection = new SqlConnection(_connectionString))
             {
                 connection.Open();
-                using (var command = new SqlCommand(string.Format("GourmetShopGetAll{0}", _table), connection))
+                using (var command = new SqlCommand(_getall, connection))
                 {
                     command.CommandType = System.Data.CommandType.StoredProcedure;
                     using (var reader = command.ExecuteReader())
@@ -72,12 +76,12 @@ namespace GourmetShop.DataAccess.Repositories
 
         public void Add(T entity)
         {
-            this.RunNonQ(entity, string.Format("GourmetShopInsert{0}", _table), false);
+            this.RunNonQ(entity, _insert, false);
         }
 
         public void Update(T entity)
         {
-            this.RunNonQ(entity, string.Format("GourmetShopUpdate{0}", _table), true);
+            this.RunNonQ(entity, _update, true);
         } 
 
         public void RunNonQ(T entity, String proc, bool withId)
@@ -113,7 +117,7 @@ namespace GourmetShop.DataAccess.Repositories
                 Type type = typeof(T);
                 var accessor = TypeAccessor.Create(type);
                 var members = accessor.GetMembers();
-                using (var comm = new SqlCommand(String.Format("GourmetShopDelete{0}", _table), connection))
+                using (var comm = new SqlCommand(_delete, connection))
                 {
                     comm.CommandType = System.Data.CommandType.StoredProcedure;
 
