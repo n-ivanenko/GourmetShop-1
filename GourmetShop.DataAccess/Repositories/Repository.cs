@@ -10,7 +10,7 @@ namespace GourmetShop.DataAccess.Repositories
 {
     public class Repository<T> : IRepository<T> where T: ITable, new()
     {
-        private readonly string _connectionString;
+        protected readonly string _connectionString;
         public string _table { get; protected set; }
         protected string _getall;
         protected string _insert;
