@@ -7,17 +7,19 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Data.SqlClient;
 using System.Data;
+using System.Security.Authentication;
 
 namespace GourmetShop.DataAccess.Repositories
 {
-    public class CustomerRepository : Repository<Product>
+    public class CustomerRepository : Repository<Customer>
     {
         public CustomerRepository(string connectionString) : base(connectionString, "Customer")
         {
-            _insert = "GourmetShopInsertProduct";
+            _insert = "GourmetShopInsertCustomer";
+            _getone = "GourmetShopGetCustomerById";
         }
 
-        public bool Login(string username, string password)
+        public Customer Login(string username, string password)
         {
             using (var connection = new SqlConnection(_connectionString))
             {
@@ -32,8 +34,11 @@ namespace GourmetShop.DataAccess.Repositories
                     comm.Parameters.AddWithValue("pPassword", password);
                     comm.Parameters.Add(retval);
                     comm.ExecuteScalar();
-
-                    return Convert.ToBoolean(retval.Value);
+                    if (Convert.ToBoolean(retval.Value))
+                    {
+                        return this.GetById(Convert.ToInt32(retval.Value));
+                    }
+                    throw new AuthenticationException("Login failed");
 
                 }
             }

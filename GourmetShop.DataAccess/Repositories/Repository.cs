@@ -13,9 +13,11 @@ namespace GourmetShop.DataAccess.Repositories
         protected readonly string _connectionString;
         public string _table { get; protected set; }
         protected string _getall;
+        protected string _getone;
         protected string _insert;
         protected string _update;
         protected string _delete;
+
 
         public Repository(string connectionString, string table)
         {
@@ -69,8 +71,23 @@ namespace GourmetShop.DataAccess.Repositories
 
         public T GetById(int id)
         {
-            // Add SQL logic for fetching a record by ID
-            throw new NotImplementedException();
+            using (var connection = new SqlConnection(_connectionString))
+            {
+                connection.Open();
+                using (var command = new SqlCommand(_getone, connection))
+                {
+                    command.CommandType = System.Data.CommandType.StoredProcedure;
+                    command.Parameters.AddWithValue("Id", id);
+
+                    using (var reader = command.ExecuteReader())
+                    {
+                        //bit me repeatedly. reader.Read() has to be use to advance the readhead 
+                        // before calling ReaderToT. Probably ReaderToT should have a different name.
+                        reader.Read();
+                        return ReaderToT(reader);
+                    }
+                }
+            }
         }
 
 

@@ -9,5 +9,5 @@ begin
 	if (@userid is null)
 		return 0;
     else
-		return 1;
+		return @userid;
 end
