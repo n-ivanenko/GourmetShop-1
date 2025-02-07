@@ -7,7 +7,7 @@ begin
 	declare @userid int
 	set @userid = (select Id from Customer where LoginName = @pLogin and PasswordHash=hashbytes('SHA2_512', @pPassword+CAST(Salt AS nvarchar(36))))
 	if (@userid is null)
-		return 1
-    else
 		return 0;
+    else
+		return 1;
 end
