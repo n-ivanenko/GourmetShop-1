@@ -17,6 +17,7 @@ namespace GourmetShop.DataAccess.Repositories
         {
             _insert = "GourmetShopInsertCustomer";
             _getone = "GourmetShopGetCustomerById";
+            _getall = "GourmetShopGetAllCustomers";
         }
 
         public Customer Login(string username, string password)
@@ -44,37 +45,5 @@ namespace GourmetShop.DataAccess.Repositories
             }
         }
 
-        // added Customer GetAll() -Nina (02/08)
-        public List<Customer> GetAll()
-        {
-            List<Customer> customers = new List<Customer>();
-
-            using (var connection = new SqlConnection(_connectionString))
-            {
-                connection.Open();
-
-                using (var comm = new SqlCommand("GourmetShopGetAllCustomers", connection))
-                {
-                    comm.CommandType = CommandType.StoredProcedure;
-
-                    using (var reader = comm.ExecuteReader())
-                    {
-                        while (reader.Read())
-                        {
-                            customers.Add(new Customer
-                            {
-                                Id = reader.GetInt32(reader.GetOrdinal("Id")),
-                                FirstName = reader.GetString(reader.GetOrdinal("FirstName")),
-                                LastName = reader.GetString(reader.GetOrdinal("LastName")),
-                                City = reader.GetString(reader.GetOrdinal("City")),
-                                Country = reader.GetString(reader.GetOrdinal("Country")),
-                            });
-                        }
-                    }
-                }
-            }
-
-            return customers;
-        }
     }
 }

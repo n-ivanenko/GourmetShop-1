@@ -14,38 +14,7 @@ namespace GourmetShop.DataAccess.Repositories
         {
             _insert = "GourmetShopInsertOrder";
             _getone = "GourmetShopGetOrderById";
-        }
-
-        public List<Order> GetAll()
-        {
-            List<Order> orders = new List<Order>();
-
-            using (var connection = new SqlConnection(_connectionString))
-            {
-                connection.Open();
-
-                using (var comm = new SqlCommand("GourmetShopGetAllOrders", connection))
-                {
-                    comm.CommandType = CommandType.StoredProcedure; 
-
-                    using (var reader = comm.ExecuteReader())
-                    {
-                        while (reader.Read())
-                        {
-                            orders.Add(new Order
-                            {
-                                Id = reader.GetInt32(reader.GetOrdinal("Id")),
-                                OrderDate = reader.GetDateTime(reader.GetOrdinal("OrderDate")),
-                                OrderNumber = reader.GetString(reader.GetOrdinal("OrderNumber")),
-                                CustomerId = reader.GetInt32(reader.GetOrdinal("CustomerId")),
-                                TotalAmount = reader.GetDecimal(reader.GetOrdinal("TotalAmount")),
-                            });
-                        }
-                    }
-                }
-            }
-
-            return orders;
+            _getall = "GourmetShopGetAllOrders";
         }
     }
 }
