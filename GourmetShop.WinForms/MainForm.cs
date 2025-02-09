@@ -18,7 +18,7 @@ namespace GourmetShop.WinForms
     enum State
     {
         Product,
-        Supplier
+        Supplier,
     }
     public partial class MainForm : Form
     {
@@ -198,6 +198,47 @@ namespace GourmetShop.WinForms
                 }
              } 
             
+        }
+
+        private void suppliersToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void viewToolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        // added viewCustomers and viewOrders to MainForms -Nina (02/08)
+        private void viewCustomersToolStripMenuItem(object sender, EventArgs e)
+        {
+            CustomerRepository cr = new CustomerRepository(connectionString);
+
+            try
+            {
+                var customers = cr.GetAll();
+                dgv.DataSource = customers;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error loading customers: " + ex.Message);
+            }
+        }
+
+        private void viewOrdersToolStripMenuItem(object sender, EventArgs e)
+        {
+            OrderRepository or = new OrderRepository(connectionString);
+
+            try
+            {
+                var orders = or.GetAll();
+                dgv.DataSource = orders;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error loading orders: " + ex.Message);
+            }
         }
     }
 }

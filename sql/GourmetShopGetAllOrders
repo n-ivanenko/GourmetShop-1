@@ -1,0 +1,13 @@
+CREATE PROCEDURE GourmetShopGetAllOrders
+AS
+BEGIN
+    SELECT 
+        Id,
+        OrderDate,
+        OrderNumber,
+        CustomerId,
+        TotalAmount
+    FROM 
+        [GourmetShop].dbo.[Order]
+END
+GO
