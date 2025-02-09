@@ -19,15 +19,18 @@ namespace GourmetShop.WinForms
     {
         Product,
         Supplier,
+        Disable
     }
     public partial class MainForm : Form
     {
         private string connectionString;
         private int clickedRow;
         private State s;
+        private ContextMenuStrip c;
         public MainForm()
         {
             InitializeComponent();
+            this.c = dgv.ContextMenuStrip;
      
         }
 
@@ -107,7 +110,16 @@ namespace GourmetShop.WinForms
 
         private void dgv_CellContextMenuStripNeeded(object sender, DataGridViewCellContextMenuStripNeededEventArgs e)
         {
-            this.clickedRow = e.RowIndex;
+            if (this.s == State.Disable)
+            {
+                //disable context menu
+                dgv.ContextMenuStrip = new ContextMenuStrip();
+            }
+            else
+            {
+                dgv.ContextMenuStrip = this.c;
+                this.clickedRow = e.RowIndex;
+            }
         }
 
         private void editToolStripMenuItem_Click(object sender, EventArgs e)
@@ -219,6 +231,7 @@ namespace GourmetShop.WinForms
             {
                 var customers = cr.GetAll();
                 dgv.DataSource = customers;
+                this.s = State.Disable;
             }
             catch (Exception ex)
             {
@@ -234,6 +247,7 @@ namespace GourmetShop.WinForms
             {
                 var orders = or.GetAll();
                 dgv.DataSource = orders;
+                this.s = State.Disable;
             }
             catch (Exception ex)
             {
