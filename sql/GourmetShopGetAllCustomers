@@ -1,0 +1,6 @@
+CREATE PROCEDURE GourmetShopGetAllCustomers
+AS
+BEGIN
+   SELECT * FROM [GourmetShop].dbo.Customer;
+END
+GO
