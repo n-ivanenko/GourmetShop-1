@@ -5,33 +5,30 @@ namespace GourmetShop.WinForms
 {
     partial class CustomerForm
     {
-        /// <summary>
-        /// Required designer variable.
-        /// </summary>
         private IContainer components = null;
 
-        // Declare all controls upfront
+        // Controls on the form
+        private Label lblCustomerName;
+        private TextBox txtCustomerName;
+        private Label lblContactName;
+        private TextBox txtContactName;
+        private Label lblPhone;
+        private TextBox txtPhone;
+        private Label lblEmail;
+        private TextBox txtEmail;
+        private Label lblIsActive;
+        private CheckBox chkIsActive;
         private Button btnAdd;
         private Button btnCancel;
-        private TextBox txtCustomerName;
-        private TextBox txtContactName;
-        private MaskedTextBox txtPhone;
-        private TextBox txtEmail;
-        private TextBox txtId;
-        private CheckBox chkIsActive;
 
         /// <summary>
-        /// Clean up any resources being used.
+        /// Clean up resources being used.
         /// </summary>
-        /// <param name="disposing">
-        /// true if managed resources should be disposed; otherwise, false.
-        /// </param>
         protected override void Dispose(bool disposing)
         {
             if (disposing && (components != null))
-            {
                 components.Dispose();
-            }
+
             base.Dispose(disposing);
         }
 
@@ -39,131 +36,139 @@ namespace GourmetShop.WinForms
 
         private void InitializeComponent()
         {
-            // 
-            // Suspend layout during control init
-            // 
             this.SuspendLayout();
 
             // 
-            // btnAdd
+            // lblCustomerName
             // 
-            this.btnAdd = new Button
-            {
-                DialogResult = DialogResult.OK,
-                Location = new System.Drawing.Point(279, 273),
-                Name = "btnAdd",
-                Size = new System.Drawing.Size(75, 34),
-                TabIndex = 6,
-                Text = "Add",
-                UseVisualStyleBackColor = true
-            };
-            // Optional: Wire up an event in CustomerForm.cs like:
-            // this.btnAdd.Click += new System.EventHandler(this.BtnAdd_Click);
-
-            // 
-            // btnCancel
-            // 
-            this.btnCancel = new Button
-            {
-                DialogResult = DialogResult.Cancel,
-                Location = new System.Drawing.Point(376, 273),
-                Name = "btnCancel",
-                Size = new System.Drawing.Size(75, 34),
-                TabIndex = 7,
-                Text = "Cancel",
-                UseVisualStyleBackColor = true
-            };
+            this.lblCustomerName = new Label();
+            this.lblCustomerName.Text = "Customer Name:";
+            this.lblCustomerName.AutoSize = true;
+            this.lblCustomerName.Location = new System.Drawing.Point(20, 20);
 
             // 
             // txtCustomerName
             // 
-            this.txtCustomerName = new TextBox
-            {
-                Location = new System.Drawing.Point(187, 40),
-                Name = "txtCustomerName",
-                Size = new System.Drawing.Size(264, 26),
-                TabIndex = 1
-            };
+            this.txtCustomerName = new TextBox();
+            this.txtCustomerName.Location = new System.Drawing.Point(150, 17);
+            this.txtCustomerName.Name = "txtCustomerName";
+            this.txtCustomerName.Size = new System.Drawing.Size(220, 26);
+            this.txtCustomerName.TabIndex = 0;
+
+            // 
+            // lblContactName
+            // 
+            this.lblContactName = new Label();
+            this.lblContactName.Text = "Contact Name:";
+            this.lblContactName.AutoSize = true;
+            this.lblContactName.Location = new System.Drawing.Point(20, 60);
 
             // 
             // txtContactName
             // 
-            this.txtContactName = new TextBox
-            {
-                Location = new System.Drawing.Point(187, 81),
-                Name = "txtContactName",
-                Size = new System.Drawing.Size(264, 26),
-                TabIndex = 2
-            };
+            this.txtContactName = new TextBox();
+            this.txtContactName.Location = new System.Drawing.Point(150, 57);
+            this.txtContactName.Name = "txtContactName";
+            this.txtContactName.Size = new System.Drawing.Size(220, 26);
+            this.txtContactName.TabIndex = 1;
+
+            // 
+            // lblPhone
+            // 
+            this.lblPhone = new Label();
+            this.lblPhone.Text = "Phone:";
+            this.lblPhone.AutoSize = true;
+            this.lblPhone.Location = new System.Drawing.Point(20, 100);
 
             // 
             // txtPhone
             // 
-            this.txtPhone = new MaskedTextBox
-            {
-                Location = new System.Drawing.Point(187, 126),
-                Name = "txtPhone",
-                Size = new System.Drawing.Size(264, 26),
-                TabIndex = 3
-            };
+            this.txtPhone = new TextBox();
+            this.txtPhone.Location = new System.Drawing.Point(150, 97);
+            this.txtPhone.Name = "txtPhone";
+            this.txtPhone.Size = new System.Drawing.Size(220, 26);
+            this.txtPhone.TabIndex = 2;
+
+            // 
+            // lblEmail
+            // 
+            this.lblEmail = new Label();
+            this.lblEmail.Text = "Email:";
+            this.lblEmail.AutoSize = true;
+            this.lblEmail.Location = new System.Drawing.Point(20, 140);
 
             // 
             // txtEmail
             // 
-            this.txtEmail = new TextBox
-            {
-                Location = new System.Drawing.Point(187, 173),
-                Name = "txtEmail",
-                Size = new System.Drawing.Size(264, 26),
-                TabIndex = 4
-            };
+            this.txtEmail = new TextBox();
+            this.txtEmail.Location = new System.Drawing.Point(150, 137);
+            this.txtEmail.Name = "txtEmail";
+            this.txtEmail.Size = new System.Drawing.Size(220, 26);
+            this.txtEmail.TabIndex = 3;
 
             // 
-            // txtId
+            // lblIsActive
             // 
-            this.txtId = new TextBox
-            {
-                Location = new System.Drawing.Point(187, 8),
-                Name = "txtId",
-                ReadOnly = true,
-                Size = new System.Drawing.Size(100, 26),
-                TabIndex = 8,
-                Visible = false
-            };
+            this.lblIsActive = new Label();
+            this.lblIsActive.Text = "Active?";
+            this.lblIsActive.AutoSize = true;
+            this.lblIsActive.Location = new System.Drawing.Point(20, 180);
 
             // 
             // chkIsActive
             // 
-            this.chkIsActive = new CheckBox
-            {
-                Location = new System.Drawing.Point(187, 220),
-                Name = "chkIsActive",
-                Size = new System.Drawing.Size(85, 24),
-                TabIndex = 5,
-                Text = "Active?",
-                UseVisualStyleBackColor = true
-            };
+            this.chkIsActive = new CheckBox();
+            this.chkIsActive.Location = new System.Drawing.Point(150, 177);
+            this.chkIsActive.Name = "chkIsActive";
+            this.chkIsActive.Size = new System.Drawing.Size(18, 17);
+            this.chkIsActive.TabIndex = 4;
+
+            // 
+            // btnAdd
+            // 
+            this.btnAdd = new Button();
+            this.btnAdd.Location = new System.Drawing.Point(20, 220);
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.Size = new System.Drawing.Size(80, 30);
+            this.btnAdd.TabIndex = 5;
+            this.btnAdd.Text = "Add";
+            this.btnAdd.UseVisualStyleBackColor = true;
+            // Wire up the click event to BtnAdd_Click in CustomerForm.cs
+            this.btnAdd.Click += new System.EventHandler(this.BtnAdd_Click);
+
+            // 
+            // btnCancel
+            // 
+            this.btnCancel = new Button();
+            this.btnCancel.Location = new System.Drawing.Point(110, 220);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Size = new System.Drawing.Size(80, 30);
+            this.btnCancel.TabIndex = 6;
+            this.btnCancel.Text = "Cancel";
+            this.btnCancel.UseVisualStyleBackColor = true;
+            // This button will close the form automatically if you set DialogResult
+            this.btnCancel.DialogResult = DialogResult.Cancel;
 
             // 
             // CustomerForm
             // 
-            this.AcceptButton = this.btnAdd;
-            this.CancelButton = this.btnCancel;
-            this.ClientSize = new System.Drawing.Size(488, 325);
+            this.AcceptButton = this.btnAdd;    // Press Enter → triggers Add
+            this.CancelButton = this.btnCancel; // Press Esc → triggers Cancel
+            this.ClientSize = new System.Drawing.Size(400, 270);
+            this.Controls.Add(this.lblCustomerName);
+            this.Controls.Add(this.txtCustomerName);
+            this.Controls.Add(this.lblContactName);
+            this.Controls.Add(this.txtContactName);
+            this.Controls.Add(this.lblPhone);
+            this.Controls.Add(this.txtPhone);
+            this.Controls.Add(this.lblEmail);
+            this.Controls.Add(this.txtEmail);
+            this.Controls.Add(this.lblIsActive);
+            this.Controls.Add(this.chkIsActive);
             this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.btnCancel);
-            this.Controls.Add(this.txtId);
-            this.Controls.Add(this.txtEmail);
-            this.Controls.Add(this.txtPhone);
-            this.Controls.Add(this.txtContactName);
-            this.Controls.Add(this.txtCustomerName);
-            this.Controls.Add(this.chkIsActive);
             this.Name = "CustomerForm";
             this.Text = "Add Customer";
-
-            // 
-            // Resume layout
-            // 
             this.ResumeLayout(false);
             this.PerformLayout();
         }

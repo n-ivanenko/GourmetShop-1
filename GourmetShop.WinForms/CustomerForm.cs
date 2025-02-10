@@ -14,48 +14,31 @@ namespace GourmetShop.WinForms
     {
         public CustomerForm()
         {
+            // Calls the InitializeComponent method in the Designer file
             InitializeComponent();
         }
 
-
-        /// Event handler for the "Add" button.
+        // Event handler for the "Add" button
         private void BtnAdd_Click(object sender, EventArgs e)
         {
-            // Retrieve data from fields
-            string name = txtCustomerName.Text;
-            string contact = txtContactName.Text;
+            // Gather the input values
+            string customerName = txtCustomerName.Text;
+            string contactName = txtContactName.Text;
             string phone = txtPhone.Text;
             string email = txtEmail.Text;
             bool isActive = chkIsActive.Checked;
 
-            // Example: simple validation
-            if (string.IsNullOrWhiteSpace(name))
-            {
-                MessageBox.Show("Please enter a valid Customer Name.",
-                                "Validation Error",
-                                MessageBoxButtons.OK,
-                                MessageBoxIcon.Warning);
-                return;
-            }
-
-            // Demonstrate a successful "add"
+            // Show a simple message with the entered data
             MessageBox.Show(
-                $"Customer '{name}' added.\nContact: {contact}\nPhone: {phone}\nEmail: {email}\nActive: {isActive}",
-                "Customer Added",
+                $"Customer Name: {customerName}\n" +
+                $"Contact Name: {contactName}\n" +
+                $"Phone: {phone}\n" +
+                $"Email: {email}\n" +
+                $"Active? {isActive}",
+                "Customer Info",
                 MessageBoxButtons.OK,
-                MessageBoxIcon.Information);
-
-
-            this.DialogResult = DialogResult.OK;
-            this.Close();
-        }
-
-        /// Event handler for the "Cancel" button.
-        private void BtnCancel_Click(object sender, EventArgs e)
-        {
-
-            this.DialogResult = DialogResult.Cancel;
-            this.Close();
+                MessageBoxIcon.Information
+            );
         }
     }
 }
