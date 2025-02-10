@@ -1,4 +1,6 @@
-﻿namespace GourmetShop.WinForms
+﻿using System;
+
+namespace GourmetShop.WinForms
 {
     partial class MainForm
     {
@@ -38,14 +40,14 @@
             this.suppliersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.viewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.addSupplier = new System.Windows.Forms.ToolStripMenuItem();
+            this.ordersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.viewToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.customersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.viewToolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
             this.dgv = new System.Windows.Forms.DataGridView();
             this.cmsRow = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.ordersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.customersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.viewToolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
-            this.viewToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv)).BeginInit();
             this.cmsRow.SuspendLayout();
@@ -94,14 +96,14 @@
             // viewToolStripMenuItem1
             // 
             this.viewToolStripMenuItem1.Name = "viewToolStripMenuItem1";
-            this.viewToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.viewToolStripMenuItem1.Size = new System.Drawing.Size(99, 22);
             this.viewToolStripMenuItem1.Text = "View";
             this.viewToolStripMenuItem1.Click += new System.EventHandler(this.viewToolStripMenuItem1_Click);
             // 
             // addToolStripMenuItem1
             // 
             this.addToolStripMenuItem1.Name = "addToolStripMenuItem1";
-            this.addToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.addToolStripMenuItem1.Size = new System.Drawing.Size(99, 22);
             this.addToolStripMenuItem1.Text = "Add";
             this.addToolStripMenuItem1.Click += new System.EventHandler(this.addToolStripMenuItem1_Click);
             // 
@@ -129,6 +131,36 @@
             this.addSupplier.Text = "Add";
             this.addSupplier.Click += new System.EventHandler(this.addSupplier_Click);
             // 
+            // ordersToolStripMenuItem
+            // 
+            this.ordersToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.viewToolStripMenuItem2});
+            this.ordersToolStripMenuItem.Name = "ordersToolStripMenuItem";
+            this.ordersToolStripMenuItem.Size = new System.Drawing.Size(54, 22);
+            this.ordersToolStripMenuItem.Text = "Orders";
+            // 
+            // viewToolStripMenuItem2
+            // 
+            this.viewToolStripMenuItem2.Name = "viewToolStripMenuItem2";
+            this.viewToolStripMenuItem2.Size = new System.Drawing.Size(180, 22);
+            this.viewToolStripMenuItem2.Text = "View";
+            this.viewToolStripMenuItem2.Click += new System.EventHandler(this.viewOrdersToolStripMenuItem);
+            // 
+            // customersToolStripMenuItem
+            // 
+            this.customersToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.viewToolStripMenuItem3});
+            this.customersToolStripMenuItem.Name = "customersToolStripMenuItem";
+            this.customersToolStripMenuItem.Size = new System.Drawing.Size(76, 22);
+            this.customersToolStripMenuItem.Text = "Customers";
+            // 
+            // viewToolStripMenuItem3
+            // 
+            this.viewToolStripMenuItem3.Name = "viewToolStripMenuItem3";
+            this.viewToolStripMenuItem3.Size = new System.Drawing.Size(180, 22);
+            this.viewToolStripMenuItem3.Text = "View";
+            this.viewToolStripMenuItem3.Click += new System.EventHandler(this.viewCustomersToolStripMenuItem);
+            // 
             // dgv
             // 
             this.dgv.AllowUserToAddRows = false;
@@ -139,7 +171,7 @@
             this.dgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgv.ContextMenuStrip = this.cmsRow;
             this.dgv.Location = new System.Drawing.Point(0, 23);
-            this.dgv.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dgv.Margin = new System.Windows.Forms.Padding(2);
             this.dgv.Name = "dgv";
             this.dgv.ReadOnly = true;
             this.dgv.RowHeadersWidth = 62;
@@ -171,36 +203,6 @@
             this.deleteToolStripMenuItem.Text = "Delete";
             this.deleteToolStripMenuItem.Click += new System.EventHandler(this.deleteToolStripMenuItem_Click);
             // 
-            // ordersToolStripMenuItem
-            // 
-            this.ordersToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.viewToolStripMenuItem2});
-            this.ordersToolStripMenuItem.Name = "ordersToolStripMenuItem";
-            this.ordersToolStripMenuItem.Size = new System.Drawing.Size(54, 22);
-            this.ordersToolStripMenuItem.Text = "Orders";
-            // 
-            // customersToolStripMenuItem
-            // 
-            this.customersToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.viewToolStripMenuItem3});
-            this.customersToolStripMenuItem.Name = "customersToolStripMenuItem";
-            this.customersToolStripMenuItem.Size = new System.Drawing.Size(76, 22);
-            this.customersToolStripMenuItem.Text = "Customers";
-            // 
-            // viewToolStripMenuItem3
-            // 
-            this.viewToolStripMenuItem3.Name = "viewToolStripMenuItem3";
-            this.viewToolStripMenuItem3.Size = new System.Drawing.Size(180, 22);
-            this.viewToolStripMenuItem3.Text = "View";
-            this.viewToolStripMenuItem3.Click += new System.EventHandler(this.viewCustomersToolStripMenuItem);
-            // 
-            // viewToolStripMenuItem2
-            // 
-            this.viewToolStripMenuItem2.Name = "viewToolStripMenuItem2";
-            this.viewToolStripMenuItem2.Size = new System.Drawing.Size(180, 22);
-            this.viewToolStripMenuItem2.Text = "View";
-            this.viewToolStripMenuItem2.Click += new System.EventHandler(this.viewOrdersToolStripMenuItem);
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -209,7 +211,7 @@
             this.Controls.Add(this.dgv);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "MainForm";
             this.Text = "Gourmet Shop";
             this.Load += new System.EventHandler(this.MainForm_Load);
@@ -220,6 +222,11 @@
             this.ResumeLayout(false);
             this.PerformLayout();
 
+        }
+
+        private void viewCustomersToolStripMenuItem(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
         }
 
         #endregion
