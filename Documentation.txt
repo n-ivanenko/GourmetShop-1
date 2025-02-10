@@ -4,8 +4,16 @@ DAVID, MACKENZIE, and NINA
 TASKS
 --------------------------------
 DAVID  
+- build customer winform
+- build cart table and associated procedures 
+- build checkout sql procedure
+- build login procedures
 
 MACKENZIE
+
+- worked on admin app 
+- added orders access for admins
+- worked on customer view for admin
 
 NINA 
 - GetAllCustomers SQL Procedure

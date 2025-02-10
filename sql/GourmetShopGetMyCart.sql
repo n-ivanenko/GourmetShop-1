@@ -1,6 +1,7 @@
 CREATE PROCEDURE GourmetShopGetMyCart (@id int) as
 BEGIN
 	select c.Id,
+		   p.id as ProductId,
 		   p.ProductName,
 		   s.CompanyName,
 		   p.Package,
