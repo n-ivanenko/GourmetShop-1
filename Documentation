@@ -1,0 +1,24 @@
+GOURMET SHOP CUSTOMER UI GROUP PROJECT
+DAVID, MACKENZIE, and NINA
+
+TASKS
+--------------------------------
+DAVID  
+
+MACKENZIE
+
+NINA 
+- GetAllCustomers SQL Procedure
+- GetAllOrders SQL Procedure
+- viewCustomers to MainForms
+- viewOrders to MainForms
+- Orders.cs
+- OrderRepository.cs
+- edited CustomerRepository.cs
+- Documentation
+
+NOTES
+---------------------------------
+- run GourmetShopProceduresALL before running GourmetShop.sln
+- MainForms is manegerial side (viewing and edititng)
+- CustomerForms is customer UI (login and place order)
