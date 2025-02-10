@@ -19,7 +19,8 @@ namespace GourmetShop.AdminView
     {
         Product,
         Supplier,
-        Disable
+        Disable,
+        Customer
     }
     public partial class MainForm : Form
     {
@@ -222,21 +223,9 @@ namespace GourmetShop.AdminView
 
         }
 
-        // added viewCustomers and viewOrders to MainForms -Nina (02/08)
-        private void viewCustomersToolStripMenuItem(object sender, EventArgs e)
+        private void btnCustomer_Click(object sender, EventArgs e)
         {
-            CustomerRepository cr = new CustomerRepository(connectionString);
 
-            try
-            {
-                var customers = cr.GetAll();
-                dgv.DataSource = customers;
-                this.s = State.Disable;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error loading customers: " + ex.Message);
-            }
         }
 
         private void viewOrdersToolStripMenuItem(object sender, EventArgs e)
