@@ -12,33 +12,46 @@ namespace GourmetShop.WinForms
 {
     public partial class CustomerForm : Form
     {
+      
+        public int Id { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public string Phone { get; set; }
+        public string Email { get; set; }
+        public bool IsActive { get; set; }
+
+      
         public CustomerForm()
         {
-            // Calls the InitializeComponent method in the Designer file
             InitializeComponent();
         }
 
-        // Event handler for the "Add" button
+        public CustomerForm(int id, string firstName, string lastName,
+                            string phone, string email, bool isActive)
+        {
+            InitializeComponent();
+            txtId.Text = id.ToString();
+            txtFirstName.Text = firstName;
+            txtLastName.Text = lastName;
+            txtPhone.Text = phone;
+            txtEmail.Text = email;
+            chkIsActive.Checked = isActive;
+
+            this.Text = "Edit Customer";
+            this.btnAdd.Text = "Save";
+        }
+
         private void BtnAdd_Click(object sender, EventArgs e)
         {
-            // Gather the input values
-            string customerName = txtCustomerName.Text;
-            string contactName = txtContactName.Text;
-            string phone = txtPhone.Text;
-            string email = txtEmail.Text;
-            bool isActive = chkIsActive.Checked;
 
-            // Show a simple message with the entered data
-            MessageBox.Show(
-                $"Customer Name: {customerName}\n" +
-                $"Contact Name: {contactName}\n" +
-                $"Phone: {phone}\n" +
-                $"Email: {email}\n" +
-                $"Active? {isActive}",
-                "Customer Info",
-                MessageBoxButtons.OK,
-                MessageBoxIcon.Information
-            );
+            this.FirstName = txtFirstName.Text;
+            this.LastName = txtLastName.Text;
+            this.Phone = txtPhone.Text;
+            this.Email = txtEmail.Text;
+            this.IsActive = chkIsActive.Checked;
+
+            this.DialogResult = DialogResult.OK;
+            this.Close();
         }
     }
 }

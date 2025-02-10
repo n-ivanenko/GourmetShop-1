@@ -19,6 +19,7 @@ namespace GourmetShop.WinForms
     {
         Product,
         Supplier,
+        Customer
     }
     public partial class MainForm : Form
     {
@@ -210,19 +211,32 @@ namespace GourmetShop.WinForms
 
         }
 
-        // added viewCustomers and viewOrders to MainForms -Nina (02/08)
-        private void viewCustomersToolStripMenuItem(object sender, EventArgs e)
+        private void btnCustomer_Click(object sender, EventArgs e)
         {
-            CustomerRepository cr = new CustomerRepository(connectionString);
+            using (var form = new CustomerForm())
+            {
+                var result = form.ShowDialog();
+                if (result == DialogResult.OK)
+                {
+                    
+                    Customer c = new Customer
+                    {
+                        
+                        Id = form.Id,
+                        FirstName = form.FirstName,
+                        LastName = form.LastName,
+                        Phone = form.Phone,
+                        Email = form.Email,
+                      
+                    };
 
-            try
-            {
-                var customers = cr.GetAll();
-                dgv.DataSource = customers;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error loading customers: " + ex.Message);
+                   
+                    CustomerRepository cr = new CustomerRepository(connectionString);
+                    cr.Add(c);
+
+                    
+                    dgv.DataSource = cr.GetAll();
+                }
             }
         }
 
