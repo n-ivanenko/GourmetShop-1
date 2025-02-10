@@ -1,4 +1,6 @@
-﻿namespace GourmetShop.AdminView
+using System;
+
+namespace GourmetShop.AdminView
 {
     partial class MainForm
     {
@@ -63,7 +65,6 @@
             this.customersToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Padding = new System.Windows.Forms.Padding(6, 2, 0, 2);
             this.menuStrip1.Size = new System.Drawing.Size(800, 33);
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
@@ -156,7 +157,7 @@
             // viewToolStripMenuItem3
             // 
             this.viewToolStripMenuItem3.Name = "viewToolStripMenuItem3";
-            this.viewToolStripMenuItem3.Size = new System.Drawing.Size(151, 34);
+            this.viewToolStripMenuItem3.Size = new System.Drawing.Size(270, 34);
             this.viewToolStripMenuItem3.Text = "View";
             this.viewToolStripMenuItem3.Click += new System.EventHandler(this.viewCustomersToolStripMenuItem);
             // 
@@ -170,6 +171,7 @@
             this.dgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgv.ContextMenuStrip = this.cmsRow;
             this.dgv.Location = new System.Drawing.Point(0, 35);
+            this.dgv.Margin = new System.Windows.Forms.Padding(2);
             this.dgv.Name = "dgv";
             this.dgv.ReadOnly = true;
             this.dgv.RowHeadersWidth = 62;
@@ -209,6 +211,7 @@
             this.Controls.Add(this.dgv);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "MainForm";
             this.Text = "Gourmet Shop";
             this.Load += new System.EventHandler(this.MainForm_Load);
@@ -218,6 +221,11 @@
             this.cmsRow.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
+
+        }
+
+        private void viewCustomersToolStripMenuItem(object sender, EventArgs e)
+        {
 
         }
 
