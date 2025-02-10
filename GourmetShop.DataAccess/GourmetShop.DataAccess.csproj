@@ -154,6 +154,8 @@
   <ItemGroup>
     <Compile Include="Entities\Cart.cs" />
     <Compile Include="Entities\Customer.cs" />
+    <Compile Include="Entities\CustomerCart.cs" />
+    <Compile Include="Entities\CustomerProduct.cs" />
     <Compile Include="Entities\ITable.cs" />
     <Compile Include="Entities\Order.cs" />
     <Compile Include="Entities\Product.cs" />

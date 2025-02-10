@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace GourmetShop.AdminView.Properties
+namespace GourmetShop.CustomerView.Properties
 {
 
 

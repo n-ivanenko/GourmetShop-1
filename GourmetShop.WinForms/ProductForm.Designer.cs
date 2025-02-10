@@ -1,4 +1,4 @@
-﻿namespace GourmetShop.WinForms
+﻿namespace GourmetShop.AdminView
 {
     partial class ProductForm
     {

@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel;
 using System.Windows.Forms;
 
-namespace GourmetShop.WinForms
+namespace GourmetShop.AdminView
 {
     partial class CustomerForm
     {

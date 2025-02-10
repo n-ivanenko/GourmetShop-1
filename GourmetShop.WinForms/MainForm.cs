@@ -12,7 +12,7 @@ using GourmetShop.DataAccess.Entities;
 using GourmetShop.DataAccess.Repositories;
 
 
-namespace GourmetShop.WinForms
+namespace GourmetShop.AdminView
 {
 
     enum State

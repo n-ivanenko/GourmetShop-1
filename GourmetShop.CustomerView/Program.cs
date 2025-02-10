@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace GourmetShop.AdminView
+namespace GourmetShop.CustomerView
 {
     internal static class Program
     {

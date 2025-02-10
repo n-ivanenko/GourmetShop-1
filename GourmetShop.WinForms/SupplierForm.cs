@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace GourmetShop.WinForms
+namespace GourmetShop.AdminView
 {
     public partial class SupplierForm : Form
     {
