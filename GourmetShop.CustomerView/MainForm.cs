@@ -12,15 +12,23 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Dynamic;
 using static System.Windows.Forms.AxHost;
+using System.Windows.Data;
+using FastMember;
 
 namespace GourmetShop.CustomerView
 {
+    enum GridType {
+        Product,
+        Cart
+    }
     public partial class MainForm : Form
     {
         private string connectionString;
         private Customer customer;
         private Boolean formInit = false;
         private int clickedRow;
+        private GridType gt = GridType.Product;
+        
         public MainForm()
         {
             InitializeComponent();
@@ -49,13 +57,35 @@ namespace GourmetShop.CustomerView
 
         private void FetchProdData()
         {
+            this.gt = GridType.Product;
+            txtFilter.Clear();
             this.formInit = false;
             dgvProd.Visible = true;
             dgvCart.Visible = false;
             ProductRepository pr = new ProductRepository(connectionString);
-
+            
             var prods = pr.GetAllCurrent();
-            dgvProd.DataSource = prods;
+
+            //we need a DataTable to be able to filter and 
+            // annoyingly the best way to turn an IEnumberable like a list
+            // into a dt is by using the FastMember library
+            DataTable dt = new DataTable();
+
+            using (var reader = ObjectReader.Create(prods, "Id", 
+                                                           "CompanyName", 
+                                                           "ProductName", 
+                                                           "SupplierId", 
+                                                           "IsDiscontinued",
+                                                           "UnitPrice",
+                                                           "Package"))
+            {
+                dt.Load(reader);
+            }
+
+            BindingSource bs = new BindingSource();
+            bs.DataSource = dt;
+
+            dgvProd.DataSource = bs;
             dgvProd.ReadOnly = true;
             dgvProd.Columns["CompanyName"].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
             dgvProd.Columns["Id"].Visible = false;
@@ -74,12 +104,35 @@ namespace GourmetShop.CustomerView
 
         private void FetchCartData()
         {
+            this.gt = GridType.Cart;
+            txtFilter.Clear();
             CartRepository cr = new CartRepository(connectionString);
             this.formInit = false;
             dgvCart.Visible = true;
             dgvProd.Visible = false;
             var mycart = cr.GetMyCart(this.customer.Id);
-            dgvCart.DataSource = mycart;
+
+            //we need a DataTable to be able to filter and 
+            // annoyingly the best way to turn an IEnumberable like a list
+            // into a dt is by using the FastMember library
+            DataTable dt = new DataTable();
+
+            using (var reader = ObjectReader.Create(mycart, "Id",
+                                                            "CustomerId",
+                                                            "ProductId",
+                                                            "CompanyName",
+                                                            "ProductName",
+                                                            "Package",
+                                                            "UnitPrice",
+                                                            "Quantity"))
+            {
+                dt.Load(reader);
+            }
+
+            BindingSource bs = new BindingSource();
+            bs.DataSource = dt;
+
+            dgvCart.DataSource = bs;
             dgvCart.ReadOnly = false;
             dgvCart.Columns["Id"].Visible = false;
             dgvCart.Columns["CustomerId"].Visible = false;
@@ -189,5 +242,18 @@ namespace GourmetShop.CustomerView
 
         }
 
+        private void txtFilter_TextChanged(object sender, EventArgs e)
+        {
+            string filter = String.Format("CompanyName LIKE '%{0}%' or ProductName LIKE '%{0}%'", txtFilter.Text);
+
+            if (this.gt == GridType.Product)
+            {
+                ((BindingSource)dgvProd.DataSource).Filter = filter;
+            }
+            else if (this.gt == GridType.Cart)
+            {
+               ((BindingSource)dgvCart.DataSource).Filter = filter; 
+            }
+        }
     }
 }

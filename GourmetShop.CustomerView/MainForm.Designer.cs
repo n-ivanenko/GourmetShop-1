@@ -43,6 +43,8 @@
             this.dgvCart = new System.Windows.Forms.DataGridView();
             this.cmsCart = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.deleteFromCartToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.txtFilter = new System.Windows.Forms.TextBox();
+            this.lblFilter = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProd)).BeginInit();
             this.cmsProd.SuspendLayout();
             this.menuStrip1.SuspendLayout();
@@ -121,7 +123,7 @@
             // viewProductsToolStripMenuItem
             // 
             this.viewProductsToolStripMenuItem.Name = "viewProductsToolStripMenuItem";
-            this.viewProductsToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
+            this.viewProductsToolStripMenuItem.Size = new System.Drawing.Size(226, 34);
             this.viewProductsToolStripMenuItem.Text = "View Products";
             this.viewProductsToolStripMenuItem.Click += new System.EventHandler(this.viewProductsToolStripMenuItem_Click);
             // 
@@ -181,11 +183,30 @@
             this.deleteFromCartToolStripMenuItem.Text = "Delete From Cart";
             this.deleteFromCartToolStripMenuItem.Click += new System.EventHandler(this.deleteFromCartToolStripMenuItem_Click);
             // 
+            // txtFilter
+            // 
+            this.txtFilter.Location = new System.Drawing.Point(881, 4);
+            this.txtFilter.Name = "txtFilter";
+            this.txtFilter.Size = new System.Drawing.Size(263, 26);
+            this.txtFilter.TabIndex = 3;
+            this.txtFilter.TextChanged += new System.EventHandler(this.txtFilter_TextChanged);
+            // 
+            // lblFilter
+            // 
+            this.lblFilter.AutoSize = true;
+            this.lblFilter.Location = new System.Drawing.Point(814, 7);
+            this.lblFilter.Name = "lblFilter";
+            this.lblFilter.Size = new System.Drawing.Size(44, 20);
+            this.lblFilter.TabIndex = 4;
+            this.lblFilter.Text = "Filter";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1156, 607);
+            this.Controls.Add(this.lblFilter);
+            this.Controls.Add(this.txtFilter);
             this.Controls.Add(this.dgvCart);
             this.Controls.Add(this.dgvProd);
             this.Controls.Add(this.menuStrip1);
@@ -220,6 +241,8 @@
         private System.Windows.Forms.ToolStripMenuItem deleteFromCartToolStripMenuItem;
         private System.Windows.Forms.ContextMenuStrip cmsProd;
         private System.Windows.Forms.ToolStripMenuItem addToCartToolStripMenuItem;
+        private System.Windows.Forms.TextBox txtFilter;
+        private System.Windows.Forms.Label lblFilter;
     }
 }
 
