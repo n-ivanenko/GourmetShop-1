@@ -242,18 +242,33 @@ namespace GourmetShop.CustomerView
 
         }
 
-        private void txtFilter_TextChanged(object sender, EventArgs e)
-        {
-            string filter = String.Format("CompanyName LIKE '%{0}%' or ProductName LIKE '%{0}%'", txtFilter.Text);
+        //private void txtFilter_TextChanged(object sender, EventArgs e)
+//{
+//    string filter = String.Format("CompanyName LIKE '%{0}%' or ProductName LIKE '%{0}%'", txtFilter.Text);
 
-            if (this.gt == GridType.Product)
-            {
-                ((BindingSource)dgvProd.DataSource).Filter = filter;
-            }
-            else if (this.gt == GridType.Cart)
-            {
-               ((BindingSource)dgvCart.DataSource).Filter = filter; 
-            }
-        }
+//    if (this.gt == GridType.Product)
+//    {
+//        ((BindingSource)dgvProd.DataSource).Filter = filter;
+//    }
+//    else if (this.gt == GridType.Cart)
+//    {
+//       ((BindingSource)dgvCart.DataSource).Filter = filter; 
+//    }
+//}
+private void txtFilter_TextChanged(object sender, EventArgs e)
+{
+    string filter = String.Format("CompanyName LIKE '%{0}%' or ProductName LIKE '%{0}%'", txtFilter.Text);
+
+    if (this.gt == GridType.Product)
+    {
+        ((BindingSource)dgvProd.DataSource).Filter = filter;
+    }
+    else if (this.gt == GridType.Cart)
+    {
+        string cartFilter = String.Format("CompanyName LIKE '%{0}%' or ProductName LIKE '%{0}%' or CustomerId LIKE '%{0}%' or ProductName LIKE '%{0}%'", txtFilter.Text);
+
+        ((BindingSource)dgvCart.DataSource).Filter = cartFilte
+    }
+}
     }
 }
