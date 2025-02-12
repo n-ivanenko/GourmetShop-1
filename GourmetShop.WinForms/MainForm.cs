@@ -218,16 +218,6 @@ namespace GourmetShop.AdminView
 
         }
 
-        private void viewToolStripMenuItem2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnCustomer_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void viewOrdersToolStripMenuItem(object sender, EventArgs e)
         {
             OrderRepository or = new OrderRepository(connectionString);
@@ -242,6 +232,14 @@ namespace GourmetShop.AdminView
             {
                 MessageBox.Show("Error loading orders: " + ex.Message);
             }
+        }
+
+        private void viewCustomersMenuItem_Click(object sender, EventArgs e)
+        {
+            CustomerRepository cr = new CustomerRepository(connectionString);
+            var customers = cr.GetAll();
+            dgv.DataSource = customers;
+            this.s = State.Disable;
         }
     }
 }
